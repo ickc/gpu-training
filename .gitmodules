@@ -1,0 +1,3 @@
+[submodule "submodule/GPU_Training"]
+	path = submodule/GPU_Training
+	url = https://github.com/UniExeterRSE/GPU_Training.git
