@@ -1,0 +1,33 @@
+[project]
+authors = ["Kolen Cheung <christian.kolen@gmail.com>"]
+channels = ["conda-forge"]
+description = "A training course to explain the use of GPUs"
+name = "GPU Training Course"
+platforms = ["osx-arm64", "linux-64", "linux-aarch64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+python = ">=3.11"
+xarray = ">=2023.5.0,<2024" # For handling NetCDF data
+netCDF4 = ">=1.6.1,<2"      # For reading NetCDF files
+matplotlib = ">=3.7.1"      # For plotting
+plotly = ">=5.15.0"         # For interactive plotting and HTML export
+copernicusmarine = "*"      # For Copernicus Marine Service data access
+tqdm = "*"
+jupyter-book = ">=1.0.0,<2"
+poetry = "*"
+
+[feature.cuda]
+system-requirements = {cuda = "12"}
+platforms = ["linux-64", "linux-aarch64"]
+
+[feature.cuda.target.linux-64.dependencies]
+cupy = "*"
+
+[feature.cuda.target.linux-aarch64.dependencies]
+cupy = "*"
+
+[environments]
+cuda = ["cuda"]
