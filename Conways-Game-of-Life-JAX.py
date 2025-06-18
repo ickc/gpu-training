@@ -34,12 +34,7 @@ MASK = jnp.array([
 @jax.jit
 def next(state):
     n_neighbors = jax.scipy.signal.convolve(state, MASK, mode="same", precision="fastest").astype(jnp.int8)
-    return jnp.where(
-        (state & ((n_neighbors == 2) | (n_neighbors == 3))) |
-        (~state & (n_neighbors == 3)),
-        True,
-        False,
-    )
+    return (state & ((n_neighbors == 2) | (n_neighbors == 3))) | (~state & (n_neighbors == 3))
 
 
 # %% [raw]
@@ -83,7 +78,3 @@ np.testing.assert_array_equal(states[2], states[5])
 for state in states:
     plt.imshow(state)
     plt.show()
-
-# %%
-
-# %%
