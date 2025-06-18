@@ -18,6 +18,8 @@ copernicusmarine = "*"      # For Copernicus Marine Service data access
 tqdm = "*"
 jupyter-book = ">=1.0.0,<2"
 poetry = "*"
+jax = "*"
+ipykernel = "*"
 
 [feature.cuda]
 system-requirements = {cuda = "12"}
@@ -25,6 +27,7 @@ platforms = ["linux-64", "linux-aarch64"]
 
 [feature.cuda.target.linux-64.dependencies]
 cupy = "*"
+jaxlib = { version = "*", build = "*cuda*" }
 
 [feature.cuda.target.linux-aarch64.dependencies]
 cupy = "*"
